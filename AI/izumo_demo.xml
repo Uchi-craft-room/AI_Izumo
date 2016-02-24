@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+  <PropertyList>
+	  <scenario>
+		<entry>
+			<type>carrier</type>
+			<name>Izumo</name>
+			<pennant-number>DDH-183</pennant-number>
+			<TACAN-channel-ID>031Y</TACAN-channel-ID>
+			<model>data/Models/Geometry/Izumo/Izumo.xml</model>
+			<latitude>35.44784422</latitude>
+			<longitude>139.71727054</longitude>
+			<speed>10</speed>
+			<heading>170</heading>
+			<rudder>0</rudder>
+			<turn-radius-ft>10000</turn-radius-ft>
+
+			<parking-pos>
+				<name>P1</name>
+				<heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>-54.00</x-offset-m>
+                                <y-offset-m>-14.9</y-offset-m>
+                                <z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+			<parking-pos>
+				<name>P2</name>
+				<heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>-12.27</x-offset-m>
+				<y-offset-m>-14.9</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+			<parking-pos>
+				<name>P3</name>
+				<heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>24.58</x-offset-m>
+				<y-offset-m>-14.9</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+			<parking-pos>
+				<name>P4</name>
+				<heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>65.6</x-offset-m>
+				<y-offset-m>-14.9</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+                        <parking-pos>
+                            <name>P5</name>
+                            <heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>105.0</x-offset-m>
+				<y-offset-m>-14.9</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+                        <parking-pos>
+                            <name>ELV1</name>
+                            <heading-offset-deg>0</heading-offset-deg>
+                                <x-offset-m>-22</x-offset-m>
+				<y-offset-m>1.0</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+
+                        <parking-pos>
+                            <name>ELV2</name>
+                            <heading-offset-deg>-90</heading-offset-deg>
+                                <x-offset-m>73.0</x-offset-m>
+				<y-offset-m>21.0</y-offset-m>
+				<z-offset-m>15</z-offset-m>
+			</parking-pos>
+			<max-lat>0.01</max-lat>
+			<min-lat>0.05</min-lat>
+			<max-long>0.05</max-long>
+			<min-long>0.01</min-long>
+			<mp-control>false</mp-control>
+			<ai-control>true</ai-control>
+
+		</entry>
+
+    </scenario>
+
+  </PropertyList>

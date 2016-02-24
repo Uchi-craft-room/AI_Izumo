@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+  Multiplayer carrier Izumo for FlightGear.
+  Writen by Hitoshi Uchida
+
+  base program is
+  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is released under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <nasal>
+  <load>
+##############################################################################
+# The on-load Nasal is not executed when this file is loaded as the user
+# aircraft.
+
+var rplayer = cmdarg();
+print("LOAD MP-Izumo " ~ rplayer.getPath());
+
+# Load the main MPCarriers Nasal module if needed.
+if (!contains(globals, "MPCarriers")) {
+  var base = "/MPCarrier/Systems/MPCarriers.nas";
+  var file = props.globals.getNode("/sim/fg-root").getValue() ~
+             "/Aircraft" ~ base;
+  if (io.stat(file) != nil) {
+      io.load_nasal(file, "MPCarriers");
+  } else {
+    foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+      var file = d.getValue() ~ base;
+      if (io.stat(file) != nil) {
+        io.load_nasal(file, "MPCarriers");
+        break;
+      }
+    }
+  }
+}
+
+# Create manager class.
+var manager = nil;
+var accept_callsign = "/sim/mp-carriers/izumo-callsign";
+
+var init = func {
+  # Initialize the callsign property if not done already.
+  props.globals.initNode(accept_callsign, "", "STRING");
+
+  manager = MPCarriers.Manager.new(rplayer,
+                                   "Izumo",
+                                   props.globals.getNode(accept_callsign));
+  print("LOAD MP-Izumo " ~ rplayer.getPath() ~ " done.");
+}
+
+settimer(init, 15);
+print("LOAD MP-Izumo " ~ rplayer.getPath() ~ " waiting.");
+
+##############################################################################
+  </load>
+  <unload>
+##############################################################################
+   print("UNLOAD MP-Izumo ", cmdarg().getPath());
+   if (manager != nil) manager.die();
+##############################################################################
+  </unload>
+ </nasal>
+
+</PropertyList>

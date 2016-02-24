@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+  Izumo -set file for FlightGear.
+ writen by Hitoshi uchida
+
+ base programu by
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is released under the GPL license version 2 or later.
+-->
+<PropertyList include="common.xml">
+
+	<sim include="Systems/izumo-views.xml">
+
+		<description>Multiplayer Izumo - Other pilots can land on it.</description>
+		<author>Hitoshi Uchida</author>
+		<status>alfa</status>
+		<aircraft-version>1.1</aircraft-version>
+
+		<flight-model>null</flight-model>
+
+		<presets>
+			<onground>true</onground>
+		</presets>
+
+		<startup>
+			<splash-texture>Aircraft/MPCarrier/izumo-splash.png</splash-texture>
+		</startup>
+
+		<sound>
+			<audible>false</audible>
+			<path/>
+		</sound>
+
+		<model>
+			<path>Aircraft/MPCarrier/Models/mp-izumo.xml</path>
+		</model>
+
+		<systems>
+
+			<electrical>
+				<path/>
+			</electrical>
+
+			<static>
+			</static>
+
+		</systems>
+
+		<instrumentation>
+			<path/>
+		</instrumentation>
+
+		<hud>
+			<path n="1">Aircraft/MPCarrier/Systems/LSO.xml</path>
+			<visibility n="1">true</visibility>
+			<font>
+				<size type="float">10.0</size>
+			</font>
+		</hud>
+
+		<!-- This aircraft is pointless without the izumo_demo scenario. -->
+		<ai>
+			<enabled type="bool">true</enabled>
+			<scenario n="100">izumo_demo</scenario>
+		</ai>
+
+		<mp-carriers>
+			<izumo-callsign type="string"></izumo-callsign>
+		</mp-carriers>
+	</sim>
+
+	<controls>
+		<rudder-pos-deg type="float"> 0.0 </rudder-pos-deg>
+		<speed-kts type="float"> 0.0 </speed-kts>
+	</controls>
+
+	<surface-positions>
+		<!-- These will be (ab)used for transmitting rudder-deg and speed-kts. -->
+		<rudder-pos-norm type="float"> 0.0 </rudder-pos-norm>
+		<flap-pos-norm type="float"> 0.0 </flap-pos-norm>
+	</surface-positions>
+
+
+	<nasal>
+		<!-- Nasal Carrier View -->
+		<CarrierControl>
+			<file>Aircraft/MPCarrier/Systems/commander.nas</file>
+			<script>
+				var carrier_name = "Izumo";
+			</script>
+		</CarrierControl>
+		<approachview>
+			<file>Aircraft/MPCarrier/Systems/approachview.nas</file>
+		</approachview>
+		<lsoview>
+			<file>Aircraft/MPCarrier/Systems/lsoview.nas</file>
+		</lsoview>
+		<Radar>
+			<file>Aircraft/MPCarrier/Panels/MP-radar.nas</file>
+		</Radar>
+		<LSOComms>
+			<file>Aircraft/MPCarrier/Systems/lsocomms.nas</file>
+		</LSOComms>
+		<walkview>
+			<file>Aircraft/Generic/WalkView/walkview.nas</file>
+		</walkview>
+		<walkviews>
+			<file>Aircraft/MPCarrier/Systems/izumo-walk-views.nas</file>
+		</walkviews>
+	</nasal>
+
+</PropertyList>

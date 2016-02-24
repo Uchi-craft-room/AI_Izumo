@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>light-cone.ac</path>
+
+ <animation>
+   <type>light</type>
+   <light-type>point</light-type>
+   <object-name>Cone</object-name>
+   <nopreview/>
+   <position>
+     <x>0</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+   <direction>
+     <x>-1</x>
+     <y>0</y>
+     <z>0</z>
+   </direction>
+   <ambient>
+     <r>0.5</r>
+     <g>0</g>
+     <b>0</b>
+     <a>1.0</a>
+   </ambient>
+   <diffuse><!--kakusan-->
+     <r>0.0</r>
+     <g>0.0</g>
+     <b>0.0</b>
+     <a>1.0</a>
+   </diffuse>
+   <specular><!--kyoumen-->
+     <r>0.5</r>
+     <g>0</g>
+     <b>0</b>
+     <a>1.0</a>
+   </specular>
+   <attenuation><!--gensui-->
+     <c>1.0</c>
+     <l>0.0</l>
+     <q>0.03</q>
+   </attenuation>
+   <exponent>10</exponent><!--sisuu-->
+   <cutoff>80</cutoff>
+   <near-m>0</near-m>
+   <far-m>50</far-m>
+ </animation>
+  
+</PropertyList>
