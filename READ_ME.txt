@@ -47,9 +47,9 @@ AI-izumo/Aircraft/MPCarrier/Systemsフォルダ内の
    ※MPCarriers.nasは上書きになります。別名で元ファイルを保管しておくことを薦めます。
 
 【手順５】
-AI-izumo/Aircraft/Navaildsフォルダ内の
+AI-izumo/Navaildsフォルダ内の
 carrier_nav.dat.gz
-⇒　FlightGear *.*.*/data/Aircraft/Navaildsの直下へ移動
+⇒　FlightGear *.*.*/data/Navaildsの直下へ移動
    ※carrier_nav.dat.gzは上書きになります。別名で元ファイルを保管しておくことを薦めます。
 
 ********************************************************************
