@@ -3,12 +3,27 @@
 <PropertyList>
 	<description>JMSDF Izumo - DDH-183</description>
 	<author>Hitoshi Uchida</author>
-	<status>V1.2</status>
+	<status>V1.3</status>
 	<path>Izumo.ac</path>
+
+   <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>wake</object-name>
+                <object-name>wake.001</object-name>
+
+   </effect>
+
+  <animation>
+    <type>noshadow</type>
+		<object-name>wake</object-name>
+                <object-name>wake.001</object-name>
+  </animation>
+
 
 	<animation>
 		<type>translate</type>
 		<object-name>ELV-1</object-name>
+		<object-name>ELV-1.001</object-name>
 		<property>surface-positions/elevators-pos-norm</property>
 		<factor>9.95</factor>
 		<axis>
@@ -21,6 +36,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>ELV-2</object-name>
+		<object-name>ELV-2.001</object-name>
 		<property>surface-positions/elevators-pos-norm</property>
 		<factor>9.95</factor>
 		<axis>
@@ -29,6 +45,57 @@
 			<z>-1</z>
 		</axis>
 	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>fence.001</object-name>
+		<property>surface-positions/elevators-pos-norm</property>
+                <interpolation>
+                 <entry><ind>0.0</ind><dep>0</dep></entry>
+                 <entry><ind>0.05</ind><dep>1</dep></entry>
+                 <entry><ind>1.0</ind><dep>1</dep></entry>
+                </interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>fence.002</object-name>
+		<property>surface-positions/elevators-pos-norm</property>
+                <interpolation>
+                 <entry><ind>0.0</ind><dep>0</dep></entry>
+                 <entry><ind>0.05</ind><dep>1</dep></entry>
+                 <entry><ind>0.95</ind><dep>1</dep></entry>
+                 <entry><ind>1.0</ind><dep>0</dep></entry>
+                </interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>fence.003</object-name>
+		<property>surface-positions/elevators-pos-norm</property>
+                <interpolation>
+                 <entry><ind>0.0</ind><dep>1</dep></entry>
+                 <entry><ind>0.95</ind><dep>1</dep></entry>
+                 <entry><ind>1.0</ind><dep>0</dep></entry>
+                </interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+
 
 	<animation>
 		<type>rotate</type>
@@ -584,7 +651,7 @@
 
  <model>
     <name>ANTICOLLISION1</name>
-    <path>Models/Geometry/Izumo/light/RedLight.xml</path>
+    <path>Models/Geometry/Izumo/light/anticollision_beacon.xml</path>
     <offsets>
       <x-m> 0 </x-m>
       <y-m> 11.6 </y-m>
@@ -598,7 +665,7 @@
 
  <model>
     <name>ANTICOLLISION2</name>
-    <path>Models/Geometry/Izumo/light/RedLight.xml</path>
+    <path>Models/Geometry/Izumo/light/anticollision_beacon.xml</path>
     <offsets>
       <x-m> 0 </x-m>
       <y-m> 14.5 </y-m>
@@ -608,6 +675,349 @@
       <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
+
+ <model>
+    <name>RED</name>
+    <path>Models/Geometry/Izumo/light/RedLight.xml</path>
+    <offsets>
+      <x-m> -73.534 </x-m>
+      <y-m> -24.00 </y-m>
+      <z-m> 15.170 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <name>GREEN</name>
+    <path>Models/Geometry/Izumo/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -73.534 </x-m>
+      <y-m> 21.00 </y-m>
+      <z-m> 14.919 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <name>MULE-1</name>
+    <path>Models/Geometry/Nimitz/models/mule-12.xml</path>
+    <offsets>
+      <x-m>-73.534 </x-m>
+      <y-m> 14.00  </y-m>
+      <z-m> 14.919 </z-m>
+      <roll-deg>   0 </roll-deg>
+      <pitch-deg>  0 </pitch-deg>
+      <heading-deg> 120 </heading-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <name>MULE-2</name>
+    <path>Models/Geometry/Nimitz/models/mule-12.xml</path>
+    <offsets>
+      <x-m>-68.534 </x-m>
+      <y-m> 14.00  </y-m>
+      <z-m> 14.919 </z-m>
+      <roll-deg>   0 </roll-deg>
+      <pitch-deg>  0 </pitch-deg>
+      <heading-deg> 120 </heading-deg>
+    </offsets>
+  </model>
+
+
+
+  <animation>
+   <type>material</type>
+		<object-name>green-p0-inn</object-name>
+		<object-name>green-p1-inn</object-name>
+                <object-name>green-p1-out</object-name>
+		<object-name>green-p2-inn</object-name>
+                <object-name>green-p2-out</object-name>
+		<object-name>green-p3-inn</object-name>
+                <object-name>green-p3-out</object-name>
+		<object-name>green-p4-inn</object-name>
+                <object-name>green-p4-out</object-name>
+		<object-name>green-p5-inn</object-name>
+                <object-name>green-p5-out</object-name>
+                <object-name>red-p0-inn</object-name>
+                <object-name>red-p1-inn</object-name>
+                <object-name>red-p1-out</object-name>
+                <object-name>red-p2-inn</object-name>
+                <object-name>red-p2-out</object-name>
+                <object-name>red-p3-inn</object-name>
+                <object-name>red-p3-out</object-name>
+                <object-name>red-p4-inn</object-name>
+                <object-name>red-p4-out</object-name>
+                <object-name>red-p5-inn</object-name>
+                <object-name>red-p5-out</object-name>
+     <emission> 
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+      </emission>
+  </animation> 
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p0-inn</object-name>
+		<condition>
+                  <greater-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.05</value>
+                  </greater-than>
+                  <less-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.15</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p1-inn</object-name>
+		<object-name>green-p1-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.2</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.3</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p2-inn</object-name>
+		<object-name>green-p2-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.35</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.45</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p3-inn</object-name>
+                <object-name>green-p3-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.5</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.6</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p4-inn</object-name>
+                <object-name>green-p4-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.65</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.75</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+
+	<animation>
+		<type>select</type>
+		<object-name>green-p5-inn</object-name>
+                <object-name>green-p5-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.8</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.9</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p0-inn</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.2</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.3</value>
+                  </less-than>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p1-inn</object-name>
+                <object-name>red-p1-out</object-name>
+		<condition>
+                 <or>
+                 <and>
+                  <greater-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.05</value>
+                  </greater-than>
+                  <less-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.1.5</value>
+                  </less-than>
+                 </and>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.35</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.45</value>
+                  </less-than>
+                 </and>
+                 </or>
+		</condition>
+	</animation>
+
+
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p2-inn</object-name>
+                <object-name>red-p2-out</object-name>
+		<condition>
+                 <or>
+                 <and>
+                  <greater-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.05</value>
+                  </greater-than>
+                  <less-than>
+		    <property>controls/lighting/flood-lights-red-norm</property>
+                    <value>0.3</value>
+                  </less-than>
+                 </and>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.5</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.6</value>
+                  </less-than>
+                 </and>
+                 </or>
+		</condition>
+	</animation>
+
+
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p3-inn</object-name>
+                <object-name>red-p3-out</object-name>
+		<condition>
+                 <or>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.35</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.45</value>
+                  </less-than>
+                 </and>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.65</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.75</value>
+                  </less-than>
+                 </and>
+                 </or>
+		</condition>
+	</animation>
+
+
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p4-inn</object-name>
+                <object-name>red-p4-out</object-name>
+		<condition>
+                 <or>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.5</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.6</value>
+                  </less-than>
+                 </and>
+                 <and>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.8</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.9</value>
+                  </less-than>
+                 </and>
+                 </or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+                <object-name>red-p5-inn</object-name>
+                <object-name>red-p5-out</object-name>
+		<condition>
+                  <greater-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.65</value>
+                  </greater-than>
+                  <less-than>
+		  <property>controls/lighting/flood-lights-red-norm</property>
+                  <value>0.75</value>
+                  </less-than>
+		</condition>
+	</animation>
 
 	<!-- *** LoD *** -->
 	<animation>

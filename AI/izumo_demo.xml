@@ -7,7 +7,7 @@
 			<name>Izumo</name>
 			<pennant-number>DDH-183</pennant-number>
 			<TACAN-channel-ID>031Y</TACAN-channel-ID>
-			<model>data/Models/Geometry/Izumo/Izumo.xml</model>
+			<model>Models/Geometry/Izumo/Izumo.xml</model>
 			<latitude>35.44784422</latitude>
 			<longitude>139.71727054</longitude>
 			<speed>10</speed>
