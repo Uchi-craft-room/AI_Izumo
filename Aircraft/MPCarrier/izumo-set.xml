@@ -14,7 +14,7 @@
 		<description>Multiplayer Izumo - Other pilots can land on it.</description>
 		<author>Hitoshi Uchida</author>
 		<status>alfa</status>
-		<aircraft-version>1.1</aircraft-version>
+		<aircraft-version>1.4</aircraft-version>
 
 		<flight-model>null</flight-model>
 
@@ -27,7 +27,7 @@
 		</startup>
 
 		<sound>
-			<audible>false</audible>
+			<audible>true</audible>
 			<path/>
 		</sound>
 

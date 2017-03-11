@@ -3,14 +3,41 @@
 <PropertyList>
 	<description>JMSDF Izumo - DDH-183</description>
 	<author>Hitoshi Uchida</author>
-	<status>V1.3</status>
+	<status>V1.4</status>
 	<path>Izumo.ac</path>
+
+   <effect>
+    <inherits-from>Effects/flightdeck</inherits-from>
+		<object-name>deck</object-name>
+                <object-name>ELV-1.001</object-name>
+                <object-name>ELV-2.001</object-name>
+   </effect>
+
 
    <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
 		<object-name>wake</object-name>
                 <object-name>wake.001</object-name>
-
+                <object-name>red-p0-inn</object-name>
+                <object-name>red-p0-out</object-name>
+		<object-name>green-p0-inn</object-name>
+		<object-name>green-p0-out</object-name>
+                <object-name>red-p1-inn</object-name>
+                <object-name>red-p1-out</object-name>
+		<object-name>green-p1-inn</object-name>
+		<object-name>green-p1-out</object-name>
+                <object-name>red-p2-inn</object-name>
+                <object-name>red-p2-out</object-name>
+		<object-name>green-p2-inn</object-name>
+		<object-name>green-p2-out</object-name>
+                <object-name>red-p3-inn</object-name>
+                <object-name>red-p3-out</object-name>
+		<object-name>green-p3-inn</object-name>
+		<object-name>green-p3-out</object-name>
+                <object-name>red-p4-inn</object-name>
+                <object-name>red-p4-out</object-name>
+		<object-name>green-p4-inn</object-name>
+		<object-name>green-p4-out</object-name>
    </effect>
 
   <animation>
@@ -733,6 +760,7 @@
   <animation>
    <type>material</type>
 		<object-name>green-p0-inn</object-name>
+		<object-name>green-p0-out</object-name>
 		<object-name>green-p1-inn</object-name>
                 <object-name>green-p1-out</object-name>
 		<object-name>green-p2-inn</object-name>
@@ -741,8 +769,6 @@
                 <object-name>green-p3-out</object-name>
 		<object-name>green-p4-inn</object-name>
                 <object-name>green-p4-out</object-name>
-		<object-name>green-p5-inn</object-name>
-                <object-name>green-p5-out</object-name>
                 <object-name>red-p0-inn</object-name>
                 <object-name>red-p1-inn</object-name>
                 <object-name>red-p1-out</object-name>
@@ -752,8 +778,6 @@
                 <object-name>red-p3-out</object-name>
                 <object-name>red-p4-inn</object-name>
                 <object-name>red-p4-out</object-name>
-                <object-name>red-p5-inn</object-name>
-                <object-name>red-p5-out</object-name>
      <emission> 
         <red>1</red>
         <green>1</green>
@@ -761,25 +785,11 @@
       </emission>
   </animation> 
 
-	<animation>
-		<type>select</type>
-		<object-name>green-p0-inn</object-name>
-		<condition>
-                  <greater-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.05</value>
-                  </greater-than>
-                  <less-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.15</value>
-                  </less-than>
-		</condition>
-	</animation>
 
 	<animation>
 		<type>select</type>
-		<object-name>green-p1-inn</object-name>
-		<object-name>green-p1-out</object-name>
+		<object-name>green-p0-inn</object-name>
+		<object-name>green-p0-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -795,8 +805,8 @@
 
 	<animation>
 		<type>select</type>
-		<object-name>green-p2-inn</object-name>
-		<object-name>green-p2-out</object-name>
+		<object-name>green-p1-inn</object-name>
+		<object-name>green-p1-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -812,8 +822,8 @@
 
 	<animation>
 		<type>select</type>
-		<object-name>green-p3-inn</object-name>
-                <object-name>green-p3-out</object-name>
+		<object-name>green-p2-inn</object-name>
+                <object-name>green-p2-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -829,8 +839,8 @@
 
 	<animation>
 		<type>select</type>
-		<object-name>green-p4-inn</object-name>
-                <object-name>green-p4-out</object-name>
+		<object-name>green-p3-inn</object-name>
+                <object-name>green-p3-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -846,8 +856,8 @@
 
 	<animation>
 		<type>select</type>
-		<object-name>green-p5-inn</object-name>
-                <object-name>green-p5-out</object-name>
+		<object-name>green-p4-inn</object-name>
+                <object-name>green-p4-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -862,25 +872,11 @@
 
 
 
-	<animation>
-		<type>select</type>
-                <object-name>red-p0-inn</object-name>
-		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.2</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.3</value>
-                  </less-than>
-		</condition>
-	</animation>
 
 	<animation>
 		<type>select</type>
-                <object-name>red-p1-inn</object-name>
-                <object-name>red-p1-out</object-name>
+                <object-name>red-p0-inn</object-name>
+                <object-name>red-p0-out</object-name>
 		<condition>
                  <or>
                  <and>
@@ -911,8 +907,8 @@
 
 	<animation>
 		<type>select</type>
-                <object-name>red-p2-inn</object-name>
-                <object-name>red-p2-out</object-name>
+                <object-name>red-p1-inn</object-name>
+                <object-name>red-p1-out</object-name>
 		<condition>
                  <or>
                  <and>
@@ -943,8 +939,8 @@
 
 	<animation>
 		<type>select</type>
-                <object-name>red-p3-inn</object-name>
-                <object-name>red-p3-out</object-name>
+                <object-name>red-p2-inn</object-name>
+                <object-name>red-p2-out</object-name>
 		<condition>
                  <or>
                  <and>
@@ -975,8 +971,8 @@
 
 	<animation>
 		<type>select</type>
-                <object-name>red-p4-inn</object-name>
-                <object-name>red-p4-out</object-name>
+                <object-name>red-p3-inn</object-name>
+                <object-name>red-p3-out</object-name>
 		<condition>
                  <or>
                  <and>
@@ -1005,8 +1001,8 @@
 
 	<animation>
 		<type>select</type>
-                <object-name>red-p5-inn</object-name>
-                <object-name>red-p5-out</object-name>
+                <object-name>red-p4-inn</object-name>
+                <object-name>red-p4-out</object-name>
 		<condition>
                   <greater-than>
 		  <property>controls/lighting/flood-lights-red-norm</property>
@@ -1019,9 +1015,416 @@
 		</condition>
 	</animation>
 
-	<!-- *** LoD *** -->
+<!-- LSO LIGHT-->
+
+  <animation>
+   <type>material</type>
+		<object-name>GREEN-WINK</object-name>
+		<object-name>GREEN</object-name>
+		<object-name>RED</object-name>
+                <object-name>RED-WINK</object-name>
+     <emission> 
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+      </emission>
+  </animation> 
+
 	<animation>
-		<type>range</type>
-		<max-m>60000</max-m>
+		<type>select</type>
+		<object-name>GREEN-WINK</object-name>
+		<object-name>GREEN</object-name>
+		<object-name>RED</object-name>
+                <object-name>RED-WINK</object-name>
+		<condition>
+                <property>/sim/current-view/lso-commentary</property>
+		</condition>
 	</animation>
+
+
+<!-- WIND INDICATE-->
+
+
+      <animation>
+        <type>rotate</type>
+        <object-name>KAZAMI-RH</object-name>
+        <object-name>KAZAMI-RH-PROP</object-name>
+        <property>environment/rel-wind-from-carrier-hdg-degs</property>
+        <center>
+            <x-m>-0.843</x-m>
+            <y-m>15.081</y-m>
+            <z-m>42.534</z-m>
+        </center>
+        <axis>
+           <x>0</x>
+           <y>0</y>
+           <z>-1</z>
+        </axis>
+     </animation>
+
+      <animation>
+        <type>spin</type>
+        <object-name>KAZAMI-RH-PROP</object-name>
+        <property>environment/rel-wind-speed-kts</property>
+        <factor>10</factor>
+        <center>
+            <x-m>-1.161</x-m>
+            <y-m>15.081</y-m>
+            <z-m>42.646</z-m>
+        </center>
+        <axis>
+           <x>-1 </x>
+           <y> 0 </y>
+           <z> 0 </z>
+        </axis>
+     </animation>
+
+
+      <animation>
+        <type>rotate</type>
+        <object-name>KAZAMI-LH</object-name>
+        <object-name>KAZAMI-LH-PROP</object-name>
+        <property>environment/rel-wind-from-carrier-hdg-degs</property>
+        <center>
+            <x-m>-0.836</x-m>
+            <y-m>11.573</y-m>
+            <z-m>42.530</z-m>
+        </center>
+        <axis>
+           <x> 0 </x>
+           <y> 0 </y>
+           <z>-1 </z>
+        </axis>
+     </animation>
+
+      <animation>
+        <type>spin</type>
+        <object-name>KAZAMI-LH-PROP</object-name>
+        <property>environment/rel-wind-speed-kts</property>
+        <factor>10</factor>
+          <center>
+            <x-m>-1.161</x-m>
+            <y-m>11.597</y-m>
+            <z-m>42.646</z-m>
+          </center>
+        <axis>
+           <x>-1 </x>
+           <y> 0 </y>
+           <z> 0 </z>
+        </axis>
+     </animation>
+
+
+<!-- flug -->
+
+
+      <animation>
+        <type>rotate</type>
+        <object-name>flug0</object-name>
+        <object-name>flug1</object-name>
+        <object-name>flug2</object-name>
+        <object-name>flug3</object-name>
+        <property>environment/rel-wind-from-carrier-hdg-degs</property>
+        <center>
+            <x-m>125.892</x-m>
+            <y-m>-0.003</y-m>
+            <z-m>19.402</z-m>
+        </center>
+        <axis>
+           <x>0</x>
+           <y>0</y>
+           <z>-1</z>
+        </axis>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>flug0</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 0 </value>
+          </greater-than>
+          <less-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 3.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>flug1</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 3 </value>
+          </greater-than>
+          <less-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 10.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>flug2</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 10 </value>
+          </greater-than>
+          <less-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 20.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>flug3</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 20 </value>
+          </greater-than>
+          <less-than>
+            <property>environment/rel-wind-speed-kts</property>
+            <value> 30.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+
+<!-- speed signal -->
+
+
+      <animation>
+        <type>select</type>
+        <object-name>R1</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 0.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 6.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 18.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 21.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>R2</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 6.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 9.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 21.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 24.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+
+      <animation>
+        <type>select</type>
+        <object-name>R3</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 9.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 12.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+
+      <animation>
+        <type>select</type>
+        <object-name>R4</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 12.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 18.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 24.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 30.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+       <animation>
+        <type>select</type>
+        <object-name>L1</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 0.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 6.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 15.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 18.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+      <animation>
+        <type>select</type>
+        <object-name>L2</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 6.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 9.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 24.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 27.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+
+      <animation>
+        <type>select</type>
+        <object-name>L3</object-name>
+        <condition>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 9.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 15.1 </value>
+          </less-than>
+          </and>
+        </condition>
+     </animation>
+
+
+      <animation>
+        <type>select</type>
+        <object-name>L4</object-name>
+        <condition>
+          <or>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 18.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 24.1 </value>
+          </less-than>
+          </and>
+          <and>
+          <greater-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 27.0 </value>
+          </greater-than>
+          <less-than>
+            <property>controls/tgt-speed-kts</property>
+            <value> 30.1 </value>
+          </less-than>
+          </and>
+          </or>
+        </condition>
+     </animation>
+
+<!-- *** LoD *** -->
+	<animation>
+	<type>range</type>
+	<max-m>60000</max-m>
+	</animation>
+
 </PropertyList>
