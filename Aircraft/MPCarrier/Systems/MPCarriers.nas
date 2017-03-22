@@ -388,6 +388,7 @@ carrier_dialog.init = func (x = nil, y = nil) {
                     "Foch"       : "foch-callsign",
                     "Clemenceau" : "clemenceau-callsign",
                     "Vinson" : "vinson-callsign",
+                    "Kaga" : "kaga-callsign",
                     "Izumo"     : "izumo-callsign"};
 }
 ############################################################
