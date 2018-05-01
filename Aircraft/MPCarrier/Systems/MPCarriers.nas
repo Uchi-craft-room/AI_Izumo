@@ -389,6 +389,7 @@ carrier_dialog.init = func (x = nil, y = nil) {
                     "Clemenceau" : "clemenceau-callsign",
                     "Vinson" : "vinson-callsign",
                     "Kaga" : "kaga-callsign",
+                    "cg-57" : "cg-57-callsign",
                     "Izumo"     : "izumo-callsign"};
 }
 ############################################################
@@ -521,19 +522,8 @@ var as_num = func (val, default=0.0) {
 
 # Load the MPCarrier MP network.
 if (!contains(globals, "MPCarriersNW")) {
-  var base = "/MPCarrier/Systems/mp-network.nas";
-  var file = props.globals.getNode("/sim/fg-root").getValue() ~
-             "/Aircraft" ~ base;
-  if (io.stat(file) != nil) {
-      io.load_nasal(file, "MPCarriersNW");
-  } else {
-    foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
-      var file = d.getValue() ~ base;
-      if (io.stat(file) != nil) {
-        io.load_nasal(file, "MPCarriersNW");
-        break;
-      }
-    }
-  }
+  var base = "Aircraft/MPCarrier/Systems/mp-network.nas";
+  io.load_nasal(resolvepath(base), "MPCarriersNW");
   MPCarriersNW.mp_network_init(0);
+  
 }

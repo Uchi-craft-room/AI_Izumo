@@ -38,7 +38,7 @@ if (!contains(globals, "MPCarriers")) {
 
 # Create manager class.
 var manager = nil;
-var accept_callsign = "/sim/mp-carriers/izumo-callsign";
+var accept_callsign = "/sim/mp-carriers/Izumo-callsign";
 
 var init = func {
   # Initialize the callsign property if not done already.

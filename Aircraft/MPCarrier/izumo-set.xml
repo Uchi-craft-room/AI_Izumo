@@ -9,12 +9,13 @@
 -->
 <PropertyList include="common.xml">
 
-	<sim include="Systems/izumo-views.xml">
+	<sim include="Systems/Izumo-views.xml">
 
 		<description>Multiplayer Izumo - Other pilots can land on it.</description>
 		<author>Hitoshi Uchida</author>
 		<status>alfa</status>
-		<aircraft-version>1.4</aircraft-version>
+		<aircraft-version>1.5</aircraft-version>
+
 
 		<flight-model>null</flight-model>
 
@@ -23,7 +24,7 @@
 		</presets>
 
 		<startup>
-			<splash-texture>Aircraft/MPCarrier/izumo-splash.png</splash-texture>
+			<splash-texture>Aircraft/MPCarrier/Izumo-splash.png</splash-texture>
 		</startup>
 
 		<sound>
@@ -32,7 +33,7 @@
 		</sound>
 
 		<model>
-			<path>Aircraft/MPCarrier/Models/mp-izumo.xml</path>
+			<path>Aircraft/MPCarrier/Models/mp-Izumo.xml</path>
 		</model>
 
 		<systems>
@@ -58,14 +59,14 @@
 			</font>
 		</hud>
 
-		<!-- This aircraft is pointless without the izumo_demo scenario. -->
+		<!-- This aircraft is pointless without the Izumo_demo scenario. -->
 		<ai>
 			<enabled type="bool">true</enabled>
-			<scenario n="100">izumo_demo</scenario>
+			<scenario n="100">Izumo_demo</scenario>
 		</ai>
 
 		<mp-carriers>
-			<izumo-callsign type="string"></izumo-callsign>
+			<Izumo-callsign type="string"></Izumo-callsign>
 		</mp-carriers>
 	</sim>
 
@@ -105,7 +106,7 @@
 			<file>Aircraft/Generic/WalkView/walkview.nas</file>
 		</walkview>
 		<walkviews>
-			<file>Aircraft/MPCarrier/Systems/izumo-walk-views.nas</file>
+			<file>Aircraft/MPCarrier/Systems/Izumo-walk-views.nas</file>
 		</walkviews>
 	</nasal>
 

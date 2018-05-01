@@ -2,6 +2,7 @@
 
   <PropertyList>
 	  <scenario>
+		<name>Izumo_demo</name>
 		<entry>
 			<type>carrier</type>
 			<name>Izumo</name>
@@ -14,6 +15,7 @@
 			<heading>170</heading>
 			<rudder>0</rudder>
 			<turn-radius-ft>10000</turn-radius-ft>
+
 
 			<parking-pos>
 				<name>P1</name>

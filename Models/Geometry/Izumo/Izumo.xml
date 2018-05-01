@@ -3,8 +3,168 @@
 <PropertyList>
 	<description>JMSDF Izumo - DDH-183</description>
 	<author>Hitoshi Uchida</author>
-	<status>V1.4</status>
+	<status>V1.5</status>
+
 	<path>Izumo.ac</path>
+
+   <nasal>
+        <load>
+            <![CDATA[ 
+
+            var self = cmdarg();
+            print("Model load Izumo ", self.getPath());
+	    var pathc = self.getPath();
+
+	    # timescales
+
+      	    var elevator_transit_time = 30.0;
+      	    var jbd_transit_time = 0.5;
+
+      	    # register the dialog
+
+      	    setprop(pathc~"/dlg-name", "Izumo");
+
+	    # init course control,  animation and detail properties
+
+      	    setprop("/controls/Izumo/deck-park",0);
+      	    setprop("/controls/Izumo/crew",0);
+     	    setprop("/controls/Izumo/lights", 0);
+
+	    setprop("/controls/Izumo/turn-to-launch-hdg", 0);
+	    setprop("/controls/Izumo/turn-to-recovery-hdg", 0);
+	    setprop("/controls/Izumo/turn-to-base-course", 1);
+
+	    ################
+	    #  elevators
+
+	    setprop("/controls/Izumo/elevator[0]/state",1);
+	    setprop("/controls/Izumo/elevator[1]/state",0);
+
+      	    var elevator1 = aircraft.door.new(pathc~"/surface-positions/elevator[0]", elevator_transit_time, 1);
+      	    var elevator2 = aircraft.door.new(pathc~"/surface-positions/elevator[1]", elevator_transit_time, 0);
+      
+
+      	    var elevator_array = [elevator1, elevator2];
+
+	    ################
+	    # jet blast deflectors
+
+	    setprop("/controls/Izumo/jbd[0]/state", 0);
+	    setprop("/controls/Izumo/jbd[1]/state", 0);
+	    setprop("/controls/Izumo/jbd[2]/state", 0);
+	    setprop("/controls/Izumo/jbd[3]/state", 0);
+
+	    var jbd1 = aircraft.door.new(pathc~"/surface-positions/jbd[0]", jbd_transit_time, 0);
+	    var jbd2 = aircraft.door.new(pathc~"/surface-positions/jbd[1]", jbd_transit_time, 0);
+	    var jbd3 = aircraft.door.new(pathc~"/surface-positions/jbd[2]", jbd_transit_time, 0);
+	    var jbd4 = aircraft.door.new(pathc~"/surface-positions/jbd[3]", jbd_transit_time, 0);	 
+	    var jbd_array = [jbd1, jbd2, jbd3, jbd4];
+
+
+	    # elevator control 
+
+	    var elevator_operate = func (i){
+
+	    var tgt = getprop("/controls/Izumo/elevator["~i~"]/state");
+	    if (tgt == 1)
+		{
+		print ("Elevator ", i+1, " up.");
+		elevator_array[i].open();
+
+		}
+	    else
+		{
+		print ("Elevator ", i+1, " down.");
+		elevator_array[i].close();
+		}
+	    }
+
+	    # JBD control
+
+	    var jbd_operate = func (i) {
+
+	    var tgt = getprop("/controls/Izumo/jbd["~i~"]/state");
+	    if (tgt == 1)
+		{
+		print ("JBD ", i+1, " up.");
+		jbd_array[i].open();
+		}
+	    else
+		{
+		print ("JBD ", i+1, " down.");
+		jbd_array[i].close();
+		}
+
+	    }
+
+
+	# lighting control
+
+	    var toggle_lights = func {
+
+	    var state = getprop(pathc~"/controls/lighting/deck-lights");
+	
+	    if (state == 0)
+		{
+		setprop(pathc~"/controls/lighting/deck-lights", 1);
+		setprop(pathc~"/controls/lighting/flood-lights-red-norm", 0.7);
+		}
+	    else
+		{
+		setprop(pathc~"/controls/lighting/deck-lights", 0);
+		setprop(pathc~"/controls/lighting/flood-lights-red-norm", 0.0);
+		}
+
+	     }
+
+
+            fn_an_spn_46 = getprop("/sim/fg-root") ~ "/Aircraft/Generic/an_spn_46.nas";
+            io.load_nasal(fn_an_spn_46, "an_spn_46");
+            var anspn = an_spn_46.ANSPN46_System.new("Izumo", self);
+            anspn.SetChannel(2);
+            var an_spn_46_timer = maketimer(6, func {
+                anspn.Update();
+                an_spn_46_timer.restart(anspn.GetUpdateRate());
+            });
+            an_spn_46_timer.restart(6);
+
+	# listeners
+
+    	   var l_elev1 = setlistener("/controls/Izumo/elevator/state", func {elevator_operate(0);},0,0);
+     	   var l_elev2 = setlistener("/controls/Izumo/elevator[1]/state", func {elevator_operate(1);},0,0);
+     
+	   var l_jbd1 = setlistener("/controls/Izumo/jbd[0]/state", func {jbd_operate(0);},0,0);
+	   var l_jbd2 = setlistener("/controls/Izumo/jbd[1]/state", func {jbd_operate(1);},0,0);
+	   var l_jbd3 = setlistener("/controls/Izumo/jbd[2]/state", func {jbd_operate(2);},0,0);
+	   var l_jbd4 = setlistener("/controls/Izumo/jbd[3]/state", func {jbd_operate(3);},0,0);
+	   var l_jbd5 = setlistener("/controls/Izumo/jbd[4]/state", func {jbd_operate(4);},0,0);
+
+     	   var l_lights = setlistener("/controls/Izumo/lights", func {toggle_lights();},0,0);
+
+
+        ]]>
+        </load>
+
+        <unload>
+            <![CDATA[ 
+            an_spn_46_timer.stop();
+
+     	    # clean up listeners
+
+     	    removelistener(l_elev_1);
+     	    removelistener(l_elev_2);
+
+     	    removelistener(l_jbd_1);
+     	    removelistener(l_jbd_2);
+     	    removelistener(l_jbd_3);
+     	    removelistener(l_jbd_4);
+     	    removelistener(l_jbd_5);
+
+     	    removelistener(l_lights);
+
+            ]]>
+        </unload>
+    </nasal>
 
    <effect>
     <inherits-from>Effects/flightdeck</inherits-from>
@@ -51,7 +211,7 @@
 		<type>translate</type>
 		<object-name>ELV-1</object-name>
 		<object-name>ELV-1.001</object-name>
-		<property>surface-positions/elevators-pos-norm</property>
+		<property>surface-positions/elevator[0]/position-norm</property>
 		<factor>9.95</factor>
 		<axis>
 			<x>0</x>
@@ -64,7 +224,7 @@
 		<type>translate</type>
 		<object-name>ELV-2</object-name>
 		<object-name>ELV-2.001</object-name>
-		<property>surface-positions/elevators-pos-norm</property>
+		<property>surface-positions/elevator[1]/position-norm</property>
 		<factor>9.95</factor>
 		<axis>
 			<x>0</x>
@@ -76,7 +236,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>fence.001</object-name>
-		<property>surface-positions/elevators-pos-norm</property>
+		<property>surface-positions/elevator[0]/position-norm</property>
                 <interpolation>
                  <entry><ind>0.0</ind><dep>0</dep></entry>
                  <entry><ind>0.05</ind><dep>1</dep></entry>
@@ -92,7 +252,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>fence.002</object-name>
-		<property>surface-positions/elevators-pos-norm</property>
+		<property>surface-positions/elevator[0]/position-norm</property>
                 <interpolation>
                  <entry><ind>0.0</ind><dep>0</dep></entry>
                  <entry><ind>0.05</ind><dep>1</dep></entry>
@@ -109,7 +269,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>fence.003</object-name>
-		<property>surface-positions/elevators-pos-norm</property>
+		<property>surface-positions/elevator[1]/position-norm</property>
                 <interpolation>
                  <entry><ind>0.0</ind><dep>1</dep></entry>
                  <entry><ind>0.95</ind><dep>1</dep></entry>
@@ -791,14 +951,7 @@
 		<object-name>green-p0-inn</object-name>
 		<object-name>green-p0-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.2</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.3</value>
-                  </less-than>
+		  <property>/controls/Izumo/jbd[0]/state</property>
 		</condition>
 	</animation>
 
@@ -808,14 +961,7 @@
 		<object-name>green-p1-inn</object-name>
 		<object-name>green-p1-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.35</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.45</value>
-                  </less-than>
+		  <property>/controls/Izumo/jbd[1]/state</property>
 		</condition>
 	</animation>
 
@@ -825,14 +971,7 @@
 		<object-name>green-p2-inn</object-name>
                 <object-name>green-p2-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.5</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.6</value>
-                  </less-than>
+		  <property>/controls/Izumo/jbd[2]/state</property>
 		</condition>
 	</animation>
 
@@ -842,14 +981,7 @@
 		<object-name>green-p3-inn</object-name>
                 <object-name>green-p3-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.65</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.75</value>
-                  </less-than>
+		  <property>/controls/Izumo/jbd[3]/state</property>
 		</condition>
 	</animation>
 
@@ -859,14 +991,7 @@
 		<object-name>green-p4-inn</object-name>
                 <object-name>green-p4-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.8</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.9</value>
-                  </less-than>
+		  <property>/controls/Izumo/deck-park</property>
 		</condition>
 	</animation>
 
@@ -878,28 +1003,9 @@
                 <object-name>red-p0-inn</object-name>
                 <object-name>red-p0-out</object-name>
 		<condition>
-                 <or>
-                 <and>
-                  <greater-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.05</value>
-                  </greater-than>
-                  <less-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.1.5</value>
-                  </less-than>
-                 </and>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.35</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.45</value>
-                  </less-than>
-                 </and>
-                 </or>
+                  <not>
+		  <property>/controls/Izumo/jbd[0]/state</property>
+                  </not>
 		</condition>
 	</animation>
 
@@ -910,28 +1016,9 @@
                 <object-name>red-p1-inn</object-name>
                 <object-name>red-p1-out</object-name>
 		<condition>
-                 <or>
-                 <and>
-                  <greater-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.05</value>
-                  </greater-than>
-                  <less-than>
-		    <property>controls/lighting/flood-lights-red-norm</property>
-                    <value>0.3</value>
-                  </less-than>
-                 </and>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.5</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.6</value>
-                  </less-than>
-                 </and>
-                 </or>
+                  <not>
+		  <property>/controls/Izumo/jbd[1]/state</property>
+                  </not>
 		</condition>
 	</animation>
 
@@ -942,28 +1029,9 @@
                 <object-name>red-p2-inn</object-name>
                 <object-name>red-p2-out</object-name>
 		<condition>
-                 <or>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.35</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.45</value>
-                  </less-than>
-                 </and>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.65</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.75</value>
-                  </less-than>
-                 </and>
-                 </or>
+                  <not>
+		  <property>/controls/Izumo/jbd[2]/state</property>
+                  </not>
 		</condition>
 	</animation>
 
@@ -974,28 +1042,9 @@
                 <object-name>red-p3-inn</object-name>
                 <object-name>red-p3-out</object-name>
 		<condition>
-                 <or>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.5</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.6</value>
-                  </less-than>
-                 </and>
-                 <and>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.8</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.9</value>
-                  </less-than>
-                 </and>
-                 </or>
+                  <not>
+		  <property>/controls/Izumo/jbd[3]/state</property>
+                  </not>
 		</condition>
 	</animation>
 
@@ -1004,14 +1053,9 @@
                 <object-name>red-p4-inn</object-name>
                 <object-name>red-p4-out</object-name>
 		<condition>
-                  <greater-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.65</value>
-                  </greater-than>
-                  <less-than>
-		  <property>controls/lighting/flood-lights-red-norm</property>
-                  <value>0.75</value>
-                  </less-than>
+                  <not>
+		  <property>/controls/Izumo/deck-park</property>
+                  </not>
 		</condition>
 	</animation>
 
@@ -1037,7 +1081,7 @@
 		<object-name>RED</object-name>
                 <object-name>RED-WINK</object-name>
 		<condition>
-                <property>/sim/current-view/lso-commentary</property>
+                <property>/controls/Izumo/crew</property>
 		</condition>
 	</animation>
 
