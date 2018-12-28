@@ -11,6 +11,7 @@
 			<model>Models/Geometry/Izumo/Izumo.xml</model>
 			<latitude>35.44784422</latitude>
 			<longitude>139.71727054</longitude>
+			<deck-altitude>50</deck-altitude>
 			<speed>10</speed>
 			<heading>170</heading>
 			<rudder>0</rudder>

@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <!--
   Multiplayer carrier Izumo for FlightGear.
-  Writen by Hitoshi Uchida
 
-  base program is
-  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2016  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is released under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -20,20 +18,8 @@ print("LOAD MP-Izumo " ~ rplayer.getPath());
 
 # Load the main MPCarriers Nasal module if needed.
 if (!contains(globals, "MPCarriers")) {
-  var base = "/MPCarrier/Systems/MPCarriers.nas";
-  var file = props.globals.getNode("/sim/fg-root").getValue() ~
-             "/Aircraft" ~ base;
-  if (io.stat(file) != nil) {
-      io.load_nasal(file, "MPCarriers");
-  } else {
-    foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
-      var file = d.getValue() ~ base;
-      if (io.stat(file) != nil) {
-        io.load_nasal(file, "MPCarriers");
-        break;
-      }
-    }
-  }
+  var base = "Aircraft/MPCarrier/Systems/MPCarriers.nas";
+  io.load_nasal(resolvepath(base), "MPCarriers");
 }
 
 # Create manager class.

@@ -16,7 +16,7 @@
 		</empty>
 
 		<text>
-			<label>JMSDF Izumo Controls</label>
+			<label>JMSDF DDH-183 Izumo Controls</label>
 		</text>
 
 		<empty>
@@ -152,7 +152,7 @@
 			<halign>left</halign>
 			<row>1</row>
 			<col>0</col>
-			<label>ELV1</label>
+			<label>Elevator 1</label>
 			<property>/controls/Izumo/elevator[0]/state</property>
 			<binding>
 				<command>dialog-apply</command>
@@ -163,24 +163,12 @@
 			<halign>left</halign>
 			<row>1</row>
 			<col>1</col>
-			<label>ELV2</label>
+			<label>Elevator 2</label>
 			<property>/controls/Izumo/elevator[1]/state</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>
 		</checkbox>
-		</group>
-
-		<hrule/>
-
-		<group>
-		<layout>table</layout>
-
-		<text>
-			<label>Deck State Signal</label>
-			<row>0</row>
-			<col>0</col>
-		</text>
 
 		<checkbox>
 			<halign>left</halign>
@@ -231,7 +219,7 @@
 			<row>3</row>
 			<col>4</col>
 			<label>P5</label>
-			<property>/controls/Izumo/deck-park</property>
+			<property>/controls/Izumo/jbd[4]/state</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>
@@ -246,7 +234,7 @@
 		<layout>table</layout>
 
 		<text>
-			<label>Lighting</label>
+			<label>Options</label>
 			<row>0</row>
 			<col>0</col>
 		</text>
@@ -264,9 +252,9 @@
 
 		<checkbox>
 			<halign>left</halign>
-			<row>3</row>
+			<row>1</row>
 			<col>0</col>
-			<label>FLOLS</label>
+			<label>Enable OLS</label>
 			<property>/controls/Izumo/crew</property>
 			<binding>
 				<command>dialog-apply</command>
@@ -275,8 +263,8 @@
 
 		<checkbox>
 			<halign>left</halign>
-			<row>3</row>
-			<col>2</col>
+			<row>1</row>
+			<col>1</col>
 			<label>Deck lights</label>
 			<property>/controls/Izumo/lights</property>
 			<binding>
@@ -289,7 +277,7 @@
 			<row>2</row>
 			<col>1</col>
 			<label>Enable Wave motion</label>
-			<property>/controls/Izumo/wave-motion</property>
+			<property>/controls/vinson/wave-motion</property>
 			<binding>
 				<command>dialog-apply</command>
 			</binding>

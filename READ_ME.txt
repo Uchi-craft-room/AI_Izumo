@@ -1,12 +1,12 @@
 
 *********************************************************************
-AI Izumo   by Hitoshi Uchida
+AI Izumo v1.6   by Hitoshi Uchida
 ************************************************************************
 ①AI艦船DDH-183ヘリコプター搭載護衛艦『いずも』にて発着シナリオを実行することができます。
 ※Carrier Controlにてエレベータを上下することが出来ます。
 
 ②MPCarrierへ『Izumo』を追加し、マルチプレイ上での操舵が可能になります。
-※事前にFlightGearの機体ダウンロードサイトから『MP Carrier』のインストールが必要です。
+※事前にFlightGearの機体データ『MP Carrier』をインストールが必要です。
 
 ***********************************************************************
 
@@ -46,12 +46,12 @@ AI-Izumo/gui/dialogsフォルダ内の"Izumo.xml"を
 
 ⇒　FlightGear *.*.*/data/gui/dialogsの直下へ移動
 
-【手順２】
+【手順６】
 AI-Izumo/Models/Geometryフォルダ内の"Izumo"フォルダを
 
 ⇒　FlightGear *.*.*/data/Models/Geometryの直下へ移動
 
-【手順５】
+【手順７】
 AI-Izumo/Navaildsフォルダ内の
 carrier_nav.dat.gz
 ⇒　FlightGear *.*.*/data/Navaildsの直下へ移動
@@ -59,7 +59,7 @@ carrier_nav.dat.gz
 
 ********************************************************************
 
-【AIシナリオ"Izumo_demo"について】
+【AIシナリオ"izumo_demo"について】
 このシナリオは横浜沿岸から南下するルートで航行する『いずも』に発着するシナリオです。
 メニューのAI/AI ObjectsからIzumoを選択すれば航行ルートの変更やエレベータを上下できます。
 艦内は格納庫になっています。デッキライトも点灯できます。
