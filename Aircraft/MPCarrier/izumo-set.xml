@@ -12,7 +12,7 @@
 	<sim include="Systems/Izumo-views.xml">
 
 		<description>Multiplayer Izumo - Other pilots can land on it.</description>
-		<long-description>Ver.1.6</long-description>
+		<long-description>Ver.1.8</long-description>
 		<author>Hitoshi Uchida 'HiTouch'(3D/FDM)</author>
 
 		<previews>
