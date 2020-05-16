@@ -12,10 +12,16 @@
 	<sim include="Systems/Izumo-views.xml">
 
 		<description>Multiplayer Izumo - Other pilots can land on it.</description>
-		<author>Hitoshi Uchida</author>
-		<status>alfa</status>
-		<aircraft-version>1.6</aircraft-version>
+		<long-description>Ver.1.6</long-description>
+		<author>Hitoshi Uchida 'HiTouch'(3D/FDM)</author>
 
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/Izumo-splash.png</path>
+			</preview>
+		</previews>
 
 		<flight-model>null</flight-model>
 
@@ -62,7 +68,7 @@
 		<!-- This aircraft is pointless without the Izumo_demo scenario. -->
 		<ai>
 			<enabled type="bool">true</enabled>
-			<scenario n="100">Izumo_demo</scenario>
+			<scenario n="100">izumo_demo</scenario>
 		</ai>
 
 		<mp-carriers>

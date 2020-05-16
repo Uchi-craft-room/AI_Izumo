@@ -1,6 +1,6 @@
 
 *********************************************************************
-AI Izumo v1.6   by Hitoshi Uchida
+AI Izumo v1.8   by HiTouch
 ************************************************************************
 ①AI艦船DDH-183ヘリコプター搭載護衛艦『いずも』にて発着シナリオを実行することができます。
 ※Carrier Controlにてエレベータを上下することが出来ます。
@@ -29,7 +29,7 @@ AI-Izumo/Aircraft/MPCarrierフォルダ内の
 
 【手順３】
 AI-Izumo/Aircraft/MPCarrier/Modelsフォルダ内の
-   mp-Izumo.xml
+   Splashフォルダ及び mp-Izumo.xml
 
 ⇒　FlightGear *.*.*/data/Aircraft/MPCarrier/Modelsの直下へ移動
 
